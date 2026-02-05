@@ -1,9 +1,9 @@
-<script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <section class="my-4">
+    <div class="container">
+      <h2 class="display-5 fw-bold text-dark text-center">Home Page</h2>
+    </div>
+  </section>
 </template>

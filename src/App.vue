@@ -1,85 +1,95 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
-import HelloWorld from './components/HelloWorld.vue';
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div class="bg-light min-vh-100">
+    <div class="d-flex min-vh-100 overflow-hidden">
+      <!-- sidebar -->
+      <aside class="bg-dark text-white shadow position-fixed h-100 d-flex flex-column sidebar">
+        <div class="p-4 flex-grow-1">
+          <div class="d-flex align-items-center mb-4">
+            <i class="fas fa-graduation-cap fs-2 me-3 text-primary"></i>
+            <span class="fw-bold fs-5">Library Dashboard</span>
+          </div>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+          <nav class="d-flex flex-column gap-1">
+            <RouterLink to="/"
+              class="d-flex align-items-center px-3 py-2 rounded text-white text-decoration-none sidebar-link">
+              <i class="fas fa-home me-3"></i>
+              <span>Home</span>
+            </RouterLink>
+            <RouterLink to="/about"
+              class="d-flex align-items-center px-3 py-2 rounded text-white text-decoration-none sidebar-link">
+              <i class="fas fa-info-circle me-3"></i>
+              <span>About</span>
+            </RouterLink>
+          </nav>
+        </div>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+        <div class="p-4 border-top border-secondary mt-auto">
+          <div class="d-flex align-items-center">
+            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center me-3 avatar-sm">
+              <i class="fas fa-user text-white"></i>
+            </div>
+            <div>
+              <p class="mb-0 small fw-semibold">Admin User</p>
+              <p class="mb-0 small text-secondary">admin@example.com</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- main content area -->
+      <div class="flex-grow-1 d-flex flex-column overflow-hidden main-content">
+        <!-- top header -->
+        <header class="bg-white shadow-sm border-bottom">
+          <div class="px-4 py-3 d-flex align-items-center justify-content-between">
+            <div>
+              <h1 class="mb-0 fs-4 fw-bold text-dark">
+                {{ $route.meta.title }}
+              </h1>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <button type="button" class="btn btn-light btn-sm p-2 rounded" aria-label="Search">
+                <i class="fas fa-search text-secondary"></i>
+              </button>
+              <div
+                class="rounded-circle bg-primary d-flex align-items-center justify-content-center avatar-sm cursor-pointer">
+                <i class="fas fa-user text-white"></i>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- main content -->
+        <main class="flex-grow-1 overflow-auto p-4">
+          <RouterView />
+        </main>
+      </div>
     </div>
-  </header>
-
-  <RouterView />
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.sidebar {
+  width: 16rem;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.main-content {
+  margin-left: 16rem;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.avatar-sm {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.cursor-pointer {
+  cursor: pointer;
 }
 </style>

@@ -1,15 +1,9 @@
-<template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
-</template>
+<script setup lang="ts"></script>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
+<template>
+  <section class="my-4">
+    <div class="container">
+      <h2 class="display-5 fw-bold text-dark text-center">About Page</h2>
+    </div>
+  </section>
+</template>
