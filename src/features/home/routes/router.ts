@@ -2,6 +2,7 @@
 import AboutView from '@/features/home/views/AboutView.vue';
 import HomeView from '@/features/home/views/HomeView.vue';
 
+// main code execution
 export default [
   {
     path: '/',
