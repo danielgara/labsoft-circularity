@@ -9,8 +9,8 @@ import { RouterLink, RouterView } from 'vue-router';
       <aside class="bg-dark text-white shadow position-fixed h-100 d-flex flex-column sidebar">
         <div class="p-4 flex-grow-1">
           <div class="d-flex align-items-center mb-4">
-            <i class="fas fa-graduation-cap fs-2 me-3 text-primary"></i>
-            <span class="fw-bold fs-5">Library Dashboard</span>
+            <i class="fas fa-flask fs-2 me-3 text-primary"></i>
+            <span class="fw-bold fs-5">LabSoft EAFIT</span>
           </div>
 
           <nav class="d-flex flex-column gap-1">
