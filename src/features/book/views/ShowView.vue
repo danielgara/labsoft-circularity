@@ -12,20 +12,20 @@ const book = BookService.getBookById(bookId);
 </script>
 
 <template>
-  <section v-if="book">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 gap-12">
-        <div class="lg:col-span-2">
-          <div class="bg-white rounded-lg shadow-md p-8 mb-8">
-            <div class="flex items-start space-x-8">
-              <div>
-                <img src="https://picsum.photos/seed/picsum/536/354" alt="Book Cover"
-                  class="object-cover rounded shadow-sm w-72 h-auto" />
-              </div>
-              <div>
-                <h2 class="text-2xl font-bold text-gray-800 mb-6">{{ book.title }}</h2>
-                <div class="prose text-gray-600">
-                  <p class="mb-4">
+  <section v-if="book" class="py-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12">
+          <div class="card shadow-sm mb-4">
+            <div class="card-body p-4 p-lg-5">
+              <div class="row align-items-start g-4">
+                <div class="col-12 col-md-auto">
+                  <img src="https://picsum.photos/seed/picsum/536/354" alt="Book Cover"
+                    class="img-fluid rounded shadow-sm" style="max-width: 18rem;" />
+                </div>
+                <div class="col">
+                  <h2 class="h2 fw-bold text-dark mb-4">{{ book.title }}</h2>
+                  <p class="text-secondary mb-0">
                     "{{ book.title }}" is an outstanding work in the {{ book.category }} category.
                     This work is an important part of our collection and has been carefully selected
                     to enrich the reading experience of our users.
@@ -35,31 +35,25 @@ const book = BookService.getBookById(bookId);
             </div>
           </div>
 
-          <div class="space-y-8">
-            <div class="bg-white rounded-lg shadow-md p-6">
-              <h3 class="text-lg font-semibold text-gray-800 mb-4">Book Information</h3>
-              <div class="space-y-3">
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Title:</span>
-                  <span class="font-medium">
-                    {{ book.title }}
-                  </span>
+          <div class="card shadow-sm">
+            <div class="card-body p-4">
+              <h3 class="h5 fw-semibold text-dark mb-4">Book Information</h3>
+              <div class="d-flex flex-column gap-2">
+                <div class="d-flex justify-content-between">
+                  <span class="text-secondary">Title:</span>
+                  <span class="fw-medium">{{ book.title }}</span>
                 </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Category:</span>
-                  <span class="font-medium">
-                    {{ book.category }}
-                  </span>
+                <div class="d-flex justify-content-between">
+                  <span class="text-secondary">Category:</span>
+                  <span class="fw-medium">{{ book.category }}</span>
                 </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Price:</span>
-                  <span class="font-medium">${{ book.price }}</span>
+                <div class="d-flex justify-content-between">
+                  <span class="text-secondary">Price:</span>
+                  <span class="fw-medium">${{ book.price }}</span>
                 </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Stock:</span>
-                  <span class="font-medium">
-                    {{ book.stock }}
-                  </span>
+                <div class="d-flex justify-content-between">
+                  <span class="text-secondary">Stock:</span>
+                  <span class="fw-medium">{{ book.stock }}</span>
                 </div>
               </div>
             </div>
