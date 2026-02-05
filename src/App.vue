@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// external libraries imports
 import { RouterLink, RouterView } from 'vue-router';
 </script>
 
