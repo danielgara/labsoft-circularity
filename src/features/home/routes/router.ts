@@ -2,16 +2,19 @@
 import AboutView from '@/features/home/views/AboutView.vue';
 import HomeView from '@/features/home/views/HomeView.vue';
 
+// main variables
+const ROUTE_PREFIX = '';
+
 // main export
 export default [
   {
-    path: '/',
+    path: `${ROUTE_PREFIX}/`,
     name: 'home',
     component: HomeView,
     meta: { title: 'Home' },
   },
   {
-    path: '/about',
+    path: `${ROUTE_PREFIX}/about`,
     name: 'about',
     component: AboutView,
     meta: { title: 'About' },
