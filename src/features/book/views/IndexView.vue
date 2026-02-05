@@ -19,7 +19,7 @@ watch(selectedCategory, (newValue) => {
   if (newValue) {
     filteredBooks.value = books.filter((book: BookInterface) => book.category === newValue);
   } else {
-    filteredBooks.value = BookService.getBooks();
+    filteredBooks.value = books;
   }
 });
 </script>
