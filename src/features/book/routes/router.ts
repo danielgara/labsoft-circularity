@@ -1,7 +1,7 @@
 // internal application code imports
 import IndexView from '@/features/book/views/IndexView.vue';
 
-// main code execution
+// main export
 export default [
   {
     path: '/books',
