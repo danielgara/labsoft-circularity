@@ -15,5 +15,5 @@ export default [
     name: 'about',
     component: AboutView,
     meta: { title: 'About' },
-  }
+  },
 ];

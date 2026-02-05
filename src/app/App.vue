@@ -15,18 +15,24 @@ import { RouterLink, RouterView } from 'vue-router';
           </div>
 
           <nav class="d-flex flex-column gap-1">
-            <RouterLink to="/"
-              class="d-flex align-items-center px-3 py-2 rounded text-white text-decoration-none sidebar-link">
+            <RouterLink
+              to="/"
+              class="d-flex align-items-center px-3 py-2 rounded text-white text-decoration-none sidebar-link"
+            >
               <i class="fas fa-home me-3"></i>
               <span>Home</span>
             </RouterLink>
-            <RouterLink to="/about"
-              class="d-flex align-items-center px-3 py-2 rounded text-white text-decoration-none sidebar-link">
+            <RouterLink
+              to="/about"
+              class="d-flex align-items-center px-3 py-2 rounded text-white text-decoration-none sidebar-link"
+            >
               <i class="fas fa-info-circle me-3"></i>
               <span>About</span>
             </RouterLink>
-            <RouterLink to="/books"
-              class="d-flex align-items-center px-3 py-2 rounded text-white text-decoration-none sidebar-link">
+            <RouterLink
+              to="/books"
+              class="d-flex align-items-center px-3 py-2 rounded text-white text-decoration-none sidebar-link"
+            >
               <i class="fas fa-book me-3"></i>
               <span>Books</span>
             </RouterLink>
@@ -35,7 +41,9 @@ import { RouterLink, RouterView } from 'vue-router';
 
         <div class="p-4 border-top border-secondary mt-auto">
           <div class="d-flex align-items-center">
-            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center me-3 avatar-sm">
+            <div
+              class="rounded-circle bg-primary d-flex align-items-center justify-content-center me-3 avatar-sm"
+            >
               <i class="fas fa-user text-white"></i>
             </div>
             <div>
@@ -61,7 +69,8 @@ import { RouterLink, RouterView } from 'vue-router';
                 <i class="fas fa-search text-secondary"></i>
               </button>
               <div
-                class="rounded-circle bg-primary d-flex align-items-center justify-content-center avatar-sm cursor-pointer">
+                class="rounded-circle bg-primary d-flex align-items-center justify-content-center avatar-sm cursor-pointer"
+              >
                 <i class="fas fa-user text-white"></i>
               </div>
             </div>

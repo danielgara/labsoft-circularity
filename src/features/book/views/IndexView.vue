@@ -29,8 +29,14 @@ watch(selectedCategory, (newValue) => {
     <div class="container">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <div class="d-flex align-items-center gap-2">
-          <label for="category-filter" class="form-label mb-0 fw-semibold text-body">Filter by Category:</label>
-          <select id="category-filter" v-model="selectedCategory" class="form-select form-select-sm w-auto">
+          <label for="category-filter" class="form-label mb-0 fw-semibold text-body"
+            >Filter by Category:</label
+          >
+          <select
+            id="category-filter"
+            v-model="selectedCategory"
+            class="form-select form-select-sm w-auto"
+          >
             <option value="">All Categories</option>
             <option v-for="category in selectableCategories" :key="category" :value="category">
               {{ category }}
@@ -50,14 +56,15 @@ watch(selectedCategory, (newValue) => {
                 <span v-if="book.stock > 0" class="badge bg-success text-nowrap">
                   {{ book.stock }} available
                 </span>
-                <span v-else class="badge bg-danger text-nowrap">
-                  Not available
-                </span>
+                <span v-else class="badge bg-danger text-nowrap"> Not available </span>
               </div>
 
               <div class="text-center mb-3">
-                <img src="https://picsum.photos/seed/picsum/536/354" alt="Book Cover"
-                  class="img-fluid rounded shadow-sm" />
+                <img
+                  src="https://picsum.photos/seed/picsum/536/354"
+                  alt="Book Cover"
+                  class="img-fluid rounded shadow-sm"
+                />
               </div>
 
               <p class="text-body-secondary small mb-3">

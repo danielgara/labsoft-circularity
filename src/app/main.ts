@@ -5,8 +5,8 @@ import { createApp } from 'vue';
 
 // internal application code imports
 import App from '@/app/App.vue';
-import router from '@/app/router';
 import PiniaInit from '@/app/PiniaInit';
+import router from '@/app/router';
 
 // main code execution
 const app = createApp(App);

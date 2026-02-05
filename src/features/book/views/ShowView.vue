@@ -20,8 +20,12 @@ const book = BookService.getBookById(bookId);
             <div class="card-body p-4 p-lg-5">
               <div class="row align-items-start g-4">
                 <div class="col-12 col-md-auto">
-                  <img src="https://picsum.photos/seed/picsum/536/354" alt="Book Cover"
-                    class="img-fluid rounded shadow-sm" style="max-width: 18rem;" />
+                  <img
+                    src="https://picsum.photos/seed/picsum/536/354"
+                    alt="Book Cover"
+                    class="img-fluid rounded shadow-sm"
+                    style="max-width: 18rem"
+                  />
                 </div>
                 <div class="col">
                   <h2 class="h2 fw-bold text-dark mb-4">{{ book.title }}</h2>
