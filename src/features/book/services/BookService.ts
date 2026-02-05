@@ -1,6 +1,6 @@
 // internal application code imports
 import type { BookInterface } from '@/features/book/interfaces/BookInterface';
-import { useBookStore } from '@/shared/stores/bookstore';
+import { useBookStore } from '@/features/book/stores/bookstore';
 
 // main class
 export class BookService {

@@ -40,7 +40,7 @@ watch(selectedCategory, (newValue) => {
       </div>
 
       <div class="row g-4">
-        <div v-for="book in books" :key="book.id" class="col-12 col-md-6 col-lg-4">
+        <div v-for="book in filteredBooks" :key="book.id" class="col-12 col-md-6 col-lg-4">
           <div class="card h-100 shadow-sm border">
             <div class="card-body d-flex flex-column">
               <div class="d-flex justify-content-between align-items-start mb-2 gap-2">
