@@ -5,6 +5,7 @@ import * as L from 'leaflet';
 
 // internal application code imports
 import { MapService } from '@/features/maps/services/MapService';
+import { createGeoJsonLayer, createInfoControl, createLegend } from '@/features/maps/services/MapInteraction';
 
 onMounted(() => {
   const map = L.map('map').setView([4.5709, -74.2973], 5);
@@ -16,7 +17,9 @@ onMounted(() => {
 
   const mapData = MapService.getMapData();
 
-  L.geoJSON(mapData).addTo(map);
+  createGeoJsonLayer(mapData, map).addTo(map);
+  createInfoControl().addTo(map);
+  createLegend().addTo(map);
 });
 </script>
 
@@ -28,5 +31,67 @@ onMounted(() => {
 .map-container {
   height: 100%;
   width: 100%;
+}
+</style>
+
+<!-- No scoped: .info and .legend are created by Leaflet (not in template), so scoped styles never apply -->
+<style>
+.info {
+  padding: 0;
+  font: 14px/1.4 system-ui, -apple-system, sans-serif;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  min-width: 140px;
+}
+
+.info-panel {
+  padding: 10px 12px;
+}
+
+.info-panel__title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.info-panel__content {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 8px;
+}
+
+.info-panel__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.info-panel__meta {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.info-panel__hint {
+  font-size: 12px;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.legend {
+  line-height: 18px;
+  color: #555;
+}
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.7;
 }
 </style>
