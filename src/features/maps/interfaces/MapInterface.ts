@@ -1,7 +1,6 @@
-// main interface
 export interface MapProperties {
+  code: string;
   name: string;
-  density: number;
 }
 
 export interface MapGeometry {
