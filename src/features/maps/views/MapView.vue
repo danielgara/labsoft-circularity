@@ -34,7 +34,6 @@ onMounted(() => {
 }
 </style>
 
-<!-- No scoped: .info and .legend are created by Leaflet (not in template), so scoped styles never apply -->
 <style>
 .info {
   padding: 0;
