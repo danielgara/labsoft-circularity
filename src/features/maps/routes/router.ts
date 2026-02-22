@@ -11,5 +11,5 @@ export default [
     name: 'maps.map',
     component: MapView,
     meta: { title: 'Map' },
-  }
+  },
 ];

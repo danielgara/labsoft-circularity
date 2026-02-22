@@ -1,6 +1,5 @@
 export interface MapProperties {
-  code: string;
-  name: string;
+  [key: string]: any;
 }
 
 export interface MapGeometry {
