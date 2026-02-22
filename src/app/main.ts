@@ -1,4 +1,5 @@
 import '@/assets/main.css';
+import 'leaflet/dist/leaflet.css';
 
 // external libraries imports
 import { createApp } from 'vue';
