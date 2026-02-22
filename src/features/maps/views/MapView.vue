@@ -2,14 +2,20 @@
 import { onMounted } from 'vue';
 import * as L from 'leaflet';
 
-onMounted(() => {
-  const map = L.map('map').setView([6.2442, -75.5812], 13); // Medellín
+// internal application code imports
+import { MapService } from '@/features/maps/services/MapService';
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors',
+onMounted(() => {
+  const map = L.map('map').setView([37.8, -96], 4);
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(map);
 
-  L.marker([6.2442, -75.5812]).addTo(map).bindPopup('Medellín').openPopup();
+  const statesData = MapService.getGeoData();
+
+  L.geoJSON(statesData as any).addTo(map);
 });
 </script>
 
