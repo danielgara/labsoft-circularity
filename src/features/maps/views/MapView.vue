@@ -5,7 +5,11 @@ import * as L from 'leaflet';
 
 // internal application code imports
 import { MapService } from '@/features/maps/services/MapService';
-import { createGeoJsonLayer, createInfoControl, createLegend } from '@/features/maps/services/MapInteraction';
+import {
+  createGeoJsonLayer,
+  createInfoControl,
+  createLegend,
+} from '@/features/maps/services/MapInteraction';
 
 onMounted(() => {
   const map = L.map('map').setView([4.5709, -74.2973], 5);
@@ -37,7 +41,10 @@ onMounted(() => {
 <style>
 .info {
   padding: 0;
-  font: 14px/1.4 system-ui, -apple-system, sans-serif;
+  font:
+    14px/1.4 system-ui,
+    -apple-system,
+    sans-serif;
   background: #fff;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
   border-radius: 8px;
