@@ -9,7 +9,7 @@ import {
   createGeoJsonLayer,
   createInfoControl,
   createLegend,
-} from '@/features/maps/services/MapInteraction';
+} from '@/features/maps/utils/MapInteraction';
 
 onMounted(() => {
   const map = L.map('map').setView([4.5709, -74.2973], 5);
