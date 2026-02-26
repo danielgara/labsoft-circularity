@@ -1,19 +1,16 @@
-export interface MapProperties {
-  [key: string]: any;
-}
-
-export interface MapGeometry {
-  type: 'Polygon' | 'MultiPolygon';
-  coordinates: number[][][] | number[][][][];
-}
-
-export interface MapFeature {
-  type: 'Feature';
-  properties: MapProperties;
-  geometry: MapGeometry;
-}
-
-export interface MapFeatureCollection {
-  type: 'FeatureCollection';
-  features: MapFeature[];
+export interface MapInterface {
+  type: 'FeatureCollection'; 
+  // departments
+  features: { 
+    type: 'Feature'; 
+    // name, area, hectares
+    properties: { 
+      [key: string]: unknown;
+    };
+    // shape: polygon(s) and their coordinate rings
+    geometry: { 
+      type: 'Polygon' | 'MultiPolygon';
+      coordinates: number[][][] | number[][][][];
+    };
+  }[];
 }

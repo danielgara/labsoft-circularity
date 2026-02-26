@@ -4,6 +4,7 @@ import { watch } from 'vue';
 
 // internal application code imports
 import { bookSeeder } from '@/features/book/stores/bookseeder';
+import { mapSeeder } from '@/features/maps/stores/mapseeder';
 
 // main class
 export default class PiniaInit {
@@ -18,6 +19,9 @@ export default class PiniaInit {
       pinia.state.value = {
         book: {
           books: bookSeeder,
+        },
+        map: {
+          mapData: mapSeeder,
         },
       };
 
