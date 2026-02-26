@@ -1,14 +1,14 @@
 export interface MapInterface {
-  type: 'FeatureCollection'; 
+  type: 'FeatureCollection';
   // departments
-  features: { 
-    type: 'Feature'; 
+  features: {
+    type: 'Feature';
     // name, area, hectares
-    properties: { 
+    properties: {
       [key: string]: unknown;
     };
     // shape: polygon(s) and their coordinate rings
-    geometry: { 
+    geometry: {
       type: 'Polygon' | 'MultiPolygon';
       coordinates: number[][][] | number[][][][];
     };
