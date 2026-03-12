@@ -18,21 +18,32 @@ export class MapUtils {
     this.map = map;
   }
 
-  getColor(): string {
-    // base color for departments
-    return '#3388ff';
+  private getColor(hectares?: number): string {
+    if (hectares == null) return '#FFEDA0';
+
+    if (hectares > 6_000_000) return '#800026';
+    if (hectares > 4_500_000) return '#BD0026';
+    if (hectares > 3_500_000) return '#E31A1C';
+    if (hectares > 2_500_000) return '#FC4E2A';
+    if (hectares > 1_500_000) return '#FD8D3C';
+    if (hectares > 900_000) return '#FEB24C';
+    if (hectares > 400_000) return '#FED976';
+    return '#FFEDA0';
   }
 
-  style(): L.PathOptions {
+  private style = (feature?: GeoJSON.Feature): L.PathOptions => {
+    const props = feature?.properties as { HECTARES?: number } | undefined;
+    const hectares = props?.HECTARES;
+
     return {
-      fillColor: this.getColor(),
-      weight: 2,
+      fillColor: this.getColor(hectares),
+      weight: 1.5,
       opacity: 1,
-      color: 'white',
+      color: '#ffffff',
       dashArray: '3',
-      fillOpacity: 0.6,
+      fillOpacity: 0.7,
     };
-  }
+  };
 
   private highlightFeature = (e: L.LeafletMouseEvent) => {
     const layer = e.target as L.Path;
@@ -81,18 +92,14 @@ export class MapUtils {
       return this._div;
     };
 
-    info.update = function (
-      this: InfoControl,
-      props?: Record<string, unknown>,
-    ) {
+    info.update = function (this: InfoControl, props?: Record<string, unknown>) {
       const p = props as
         | { NOMBRE_DPT?: string; name?: string; AREA?: number; HECTARES?: number }
         | undefined;
       const name = p?.NOMBRE_DPT ?? p?.name ?? '';
       const areaKm2 =
         p?.AREA != null
-          ? (p.AREA / 1e6).toLocaleString('en', { maximumFractionDigits: 0 }) +
-            ' km²'
+          ? (p.AREA / 1e6).toLocaleString('en', { maximumFractionDigits: 0 }) + ' km²'
           : null;
       const hectares =
         p?.HECTARES != null
@@ -109,12 +116,8 @@ export class MapUtils {
             '<div class="info-panel__name">' +
             name +
             '</div>' +
-            (areaKm2
-              ? '<div class="info-panel__meta">Area: ' + areaKm2 + '</div>'
-              : '') +
-            (hectares
-              ? '<div class="info-panel__meta">' + hectares + '</div>'
-              : '') +
+            (areaKm2 ? '<div class="info-panel__meta">Area: ' + areaKm2 + '</div>' : '') +
+            (hectares ? '<div class="info-panel__meta">' + hectares + '</div>' : '') +
             '</div>'
           : '<div class="info-panel__hint">Hover over a department</div>') +
         '</div>';
@@ -127,10 +130,27 @@ export class MapUtils {
   createLegend(): L.Control {
     const legend = this.createControl({ position: 'bottomright' });
 
-    legend.onAdd = function () {
+    const grades = [0, 750_000, 1_500_000, 3_000_000, 5_000_000];
+    const labels: string[] = [];
+
+    legend.onAdd = () => {
       const div = L.DomUtil.create('div', 'info legend');
-      div.innerHTML =
-        '<b>Colombia</b><br/><i style="background:#3388ff"></i> Departments';
+      div.innerHTML = '<div class="legend__title">Departments by hectares</div>';
+
+      for (let i = 0; i < grades.length; i += 1) {
+        const from = grades[i]!;
+        const to = grades[i + 1];
+        const color = this.getColor(to ?? from + 1);
+
+        labels.push(
+          `<div class="legend__row"><i style="background:${color}"></i>` +
+            `${(from / 1_000_000).toFixed(1)}M` +
+            (to ? ` &ndash; ${(to / 1_000_000).toFixed(1)}M ha` : '+ ha') +
+            '</div>',
+        );
+      }
+
+      div.innerHTML += labels.join('');
       return div;
     };
 
@@ -139,12 +159,10 @@ export class MapUtils {
 
   createGeoJsonLayer(data: MapInterface): L.GeoJSON {
     this.geojsonLayer = L.geoJSON(data as unknown as GeoJSON.GeoJsonObject, {
-      style: () => this.style(),
-      onEachFeature: (feature, layer) =>
-        this.onEachFeature(feature as GeoJSON.Feature, layer),
+      style: (feature) => this.style(feature as GeoJSON.Feature),
+      onEachFeature: (feature, layer) => this.onEachFeature(feature as GeoJSON.Feature, layer),
     });
 
     return this.geojsonLayer;
   }
 }
-
