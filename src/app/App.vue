@@ -30,13 +30,6 @@ import { RouterLink, RouterView } from 'vue-router';
               <span>About</span>
             </RouterLink>
             <RouterLink
-              to="/books"
-              class="d-flex align-items-center px-3 py-2 rounded text-white text-decoration-none sidebar-link"
-            >
-              <i class="fas fa-book me-3"></i>
-              <span>Books</span>
-            </RouterLink>
-            <RouterLink
               to="/maps"
               class="d-flex align-items-center px-3 py-2 rounded text-white text-decoration-none sidebar-link"
             >
