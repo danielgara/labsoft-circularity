@@ -1,9 +1,10 @@
 <script setup lang="ts"></script>
 
 <template>
-  <section class="my-4">
+  <section class="py-4">
     <div class="container">
-      <h2 class="display-5 fw-bold text-dark text-center">About Page</h2>
+      <h2 class="fs-4 fw-semibold text-dark mb-2">About</h2>
+      <p class="text-secondary small mb-0">About Circularity Explorer.</p>
     </div>
   </section>
 </template>

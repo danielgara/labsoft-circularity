@@ -4,107 +4,113 @@ import { RouterLink, RouterView } from 'vue-router';
 </script>
 
 <template>
-  <div class="bg-light min-vh-100">
-    <div class="d-flex min-vh-100 overflow-hidden">
-      <!-- sidebar -->
-      <aside class="bg-dark text-white shadow position-fixed h-100 d-flex flex-column sidebar">
-        <div class="p-4 flex-grow-1">
-          <div class="d-flex align-items-center mb-4">
-            <i class="fas fa-flask fs-2 me-3 text-primary"></i>
-            <span class="fw-bold fs-5">LabSoft EAFIT</span>
+  <div class="min-vh-100 d-flex flex-column overflow-hidden bg-light">
+    <!-- Top navbar (estilo zip: white, border, logo emerald, search, links, avatar) -->
+    <nav class="navbar navbar-expand navbar-light bg-white border-bottom border-secondary border-opacity-25 flex-shrink-0">
+      <div class="container-fluid px-4">
+        <div class="d-flex align-items-center gap-3">
+          <div class="bg-success rounded-3 p-2">
+            <i class="fas fa-map text-white"></i>
           </div>
-
-          <nav class="d-flex flex-column gap-1">
-            <RouterLink
-              to="/"
-              class="d-flex align-items-center px-3 py-2 rounded text-white text-decoration-none sidebar-link"
-            >
-              <i class="fas fa-home me-3"></i>
-              <span>Home</span>
-            </RouterLink>
-            <RouterLink
-              to="/about"
-              class="d-flex align-items-center px-3 py-2 rounded text-white text-decoration-none sidebar-link"
-            >
-              <i class="fas fa-info-circle me-3"></i>
-              <span>About</span>
-            </RouterLink>
-            <RouterLink
-              to="/maps"
-              class="d-flex align-items-center px-3 py-2 rounded text-white text-decoration-none sidebar-link"
-            >
-              <i class="fas fa-map me-3"></i>
-              <span>Maps</span>
-            </RouterLink>
-          </nav>
+          <h1 class="navbar-brand mb-0 fs-5 fw-semibold text-dark tracking-tight">
+            Circularity Explorer
+          </h1>
         </div>
 
-        <div class="p-4 border-top border-secondary mt-auto">
-          <div class="d-flex align-items-center">
-            <div
-              class="rounded-circle bg-primary d-flex align-items-center justify-content-center me-3 avatar-sm"
-            >
-              <i class="fas fa-user text-white"></i>
-            </div>
-            <div>
-              <p class="mb-0 small fw-semibold">Admin User</p>
-              <p class="mb-0 small text-secondary">admin@example.com</p>
-            </div>
+        <div class="d-none d-md-flex flex-grow-1 justify-content-center mx-4" style="max-width: 28rem">
+          <div class="position-relative w-100">
+            <i class="fas fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+            <input
+              type="text"
+              class="form-control form-control-sm ps-4 py-2 bg-light border border-secondary border-opacity-25 rounded-3"
+              placeholder="Search companies, cities, or materials..."
+              aria-label="Search"
+            />
           </div>
         </div>
+
+        <div class="d-flex align-items-center gap-3 small fw-medium text-secondary">
+          <RouterLink to="/about" class="text-secondary text-decoration-none hover-dark">About</RouterLink>
+          <span class="text-secondary">Data Sources</span>
+          <div
+            class="rounded-circle bg-success bg-opacity-25 text-success d-flex align-items-center justify-content-center fw-semibold"
+            style="width: 2rem; height: 2rem"
+          >
+            JS
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="d-flex flex-grow-1 overflow-hidden">
+      <!-- Left sidebar (estilo zip: white, border-r, nav) -->
+      <aside
+        class="bg-white border-end border-secondary border-opacity-25 flex-shrink-0 overflow-y-auto sidebar-zip"
+      >
+        <div class="p-4 border-bottom border-secondary border-opacity-10">
+          <div class="d-flex align-items-center gap-2 text-dark fw-semibold mb-1">
+            <i class="fas fa-filter text-success"></i>
+            <h2 class="mb-0 small text-uppercase">Navigation</h2>
+          </div>
+          <p class="small text-secondary mb-0">Explore the platform</p>
+        </div>
+
+        <nav class="p-4 d-flex flex-column gap-1">
+          <RouterLink
+            to="/"
+            class="d-flex align-items-center gap-3 px-3 py-2 rounded-3 text-dark text-decoration-none sidebar-link"
+          >
+            <i class="fas fa-home text-secondary"></i>
+            <span class="small fw-medium">Home</span>
+          </RouterLink>
+          <RouterLink
+            to="/about"
+            class="d-flex align-items-center gap-3 px-3 py-2 rounded-3 text-dark text-decoration-none sidebar-link"
+          >
+            <i class="fas fa-info-circle text-secondary"></i>
+            <span class="small fw-medium">About</span>
+          </RouterLink>
+          <RouterLink
+            to="/maps"
+            class="d-flex align-items-center gap-3 px-3 py-2 rounded-3 text-dark text-decoration-none sidebar-link"
+          >
+            <i class="fas fa-map text-secondary"></i>
+            <span class="small fw-medium">Maps</span>
+          </RouterLink>
+        </nav>
       </aside>
 
-      <!-- main content area -->
-      <div class="flex-grow-1 d-flex flex-column overflow-hidden main-content">
-        <!-- top header -->
-        <header class="bg-white shadow-sm border-bottom">
-          <div class="px-4 py-3 d-flex align-items-center justify-content-between">
-            <div>
-              <h1 class="mb-0 fs-4 fw-bold text-dark">
-                {{ $route.meta.title }}
-              </h1>
-            </div>
-            <div class="d-flex align-items-center gap-3">
-              <button type="button" class="btn btn-light btn-sm p-2 rounded" aria-label="Search">
-                <i class="fas fa-search text-secondary"></i>
-              </button>
-              <div
-                class="rounded-circle bg-primary d-flex align-items-center justify-content-center avatar-sm cursor-pointer"
-              >
-                <i class="fas fa-user text-white"></i>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        <!-- main content -->
-        <main class="flex-grow-1 overflow-auto p-4">
-          <RouterView />
-        </main>
-      </div>
+      <!-- Main content -->
+      <main class="flex-grow-1 overflow-auto p-4 bg-light">
+        <RouterView />
+      </main>
     </div>
   </div>
 </template>
 
 <style scoped>
-.sidebar {
-  width: 16rem;
+.sidebar-zip {
+  width: 20rem;
 }
 
-.main-content {
-  margin-left: 16rem;
-}
-
-.avatar-sm {
-  width: 2.5rem;
-  height: 2.5rem;
+.tracking-tight {
+  letter-spacing: -0.025em;
 }
 
 .sidebar-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(25, 135, 84, 0.08);
 }
 
-.cursor-pointer {
-  cursor: pointer;
+.sidebar-link.router-link-active {
+  background-color: rgba(25, 135, 84, 0.12);
+  color: var(--bs-success);
+}
+
+.sidebar-link.router-link-active i {
+  color: var(--bs-success);
+}
+
+.hover-dark:hover {
+  color: var(--bs-dark) !important;
 }
 </style>

@@ -26,10 +26,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="map" class="map-container"></div>
+  <div class="map-wrapper rounded-3 overflow-hidden border border-secondary border-opacity-25 shadow-sm">
+    <div id="map" class="map-container"></div>
+  </div>
 </template>
 
 <style scoped>
+.map-wrapper {
+  height: 100%;
+  min-height: 400px;
+}
+
 .map-container {
   height: 100%;
   width: 100%;
@@ -37,16 +44,14 @@ onMounted(() => {
 </style>
 
 <style>
+/* Estilo zip: paneles blancos, rounded-xl, shadow-lg */
 .info {
   padding: 0;
-  font:
-    14px/1.4 system-ui,
-    -apple-system,
-    sans-serif;
+  font: 14px/1.4 system-ui, -apple-system, sans-serif;
   background: #fff;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   min-width: 140px;
 }
 
@@ -88,7 +93,25 @@ onMounted(() => {
 
 .legend {
   line-height: 18px;
-  color: #555;
+  color: #374151;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.legend .legend__title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #111827;
+  margin-bottom: 0.75rem;
+}
+
+.legend__row {
+  margin-bottom: 4px;
 }
 
 .legend i {
@@ -96,6 +119,7 @@ onMounted(() => {
   height: 18px;
   float: left;
   margin-right: 8px;
-  opacity: 0.7;
+  opacity: 0.85;
+  border-radius: 2px;
 }
 </style>
