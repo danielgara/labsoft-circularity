@@ -5,11 +5,7 @@ import * as L from 'leaflet';
 
 // internal application code imports
 import { MapService } from '@/features/maps/services/MapService';
-import {
-  createGeoJsonLayer,
-  createInfoControl,
-  createLegend,
-} from '@/features/maps/utils/MapInteraction';
+import { MapUtils } from '@/features/maps/utils/MapUtils';
 
 onMounted(() => {
   const map = L.map('map').setView([4.5709, -74.2973], 5);
@@ -21,9 +17,11 @@ onMounted(() => {
 
   const mapData = MapService.getMapData();
 
-  createGeoJsonLayer(mapData, map).addTo(map);
-  createInfoControl().addTo(map);
-  createLegend().addTo(map);
+  const mapUtils = new MapUtils(map);
+
+  mapUtils.createGeoJsonLayer(mapData).addTo(map);
+  mapUtils.createInfoControl().addTo(map);
+  mapUtils.createLegend().addTo(map);
 });
 </script>
 
